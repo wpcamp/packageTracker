@@ -12,9 +12,8 @@ def fix_keys(x):
 
 class ShippingForm(FlaskForm):
     sender = StringField("Sender", validators=[DataRequired()])
-    name = StringField("Name", validators=[DataRequired()])
-    origin = SelectField("Origin", choices= fix_keys(map.keys()))
-    destination = SelectField("Destination", choices=fix_keys(map.keys()))
+    recipient = StringField("Recipient", validators=[DataRequired()])
+    origin = SelectField("Origin", choices= fix_keys(map.keys()), validators=[DataRequired()])
+    destination = SelectField("Destination", choices=fix_keys(map.keys()), validators=[DataRequired()])
     express = BooleanField("Express Shipping")
     submit = SubmitField("Confirm")
-    cancel = SubmitField("Cancel") 
